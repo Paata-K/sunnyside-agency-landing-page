@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+:root {
+  --background: rgba(74, 189, 242, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+    display: block;
+}
+
+/* navigation styles start here */
+
+.agency-logo {
+    margin: 16px;
+}
+
+.top-nav-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border: 0px;
+    border-radius: 50px;
+    margin-left: 16px;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    /*top-nav-cta - typography */
+    font-family: Fraunces;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: -0.1071428582072258px;
+    text-align: left;
+}
+
+
+header {
+  background: var(--background);
+  text-align: center;
+  position: relative;
+  z-index: 999;
+  width: 100%;
+}
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, .75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  
+  .logo {
+    grid-column: 2 / 3;
+  }
+  
+  nav {
+    all: unset; /* this causes issues with Edge, since it's unsupported */
+    
+    /* the following lines are not from my video, but add Edge support */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1,1);
+    background: none;
+    top: initial;
+    left: initial;
+    /* end Edge support stuff */
+    
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+  
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+}
+
+/* TYPOGRAPHY */
+
+.hero-text-wrapper {
+    font-family: Fraunces;
+    font-size: calc(56 / 100 * 10vw);
+    font-weight: 900;
+    line-height: calc(69 / 100 * 10vw);
+    letter-spacing: 8.75px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+
+h1 {
+    font-family: Fraunces;
+    font-size: calc(32px + 10 / 100 * 10vw);
+    font-weight: 900;
+    line-height: auto;
+    letter-spacing: -0.2857142984867096px;
+    text-align: left;  
+    color: rgba(36, 48, 62, 1);
+    ;
+    margin-top: 0px;
+    
+} 
+
+h2   {
+    font-family: Fraunces;
+    font-size: calc(15px + 5 / 100 * 10vw);
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-align: left;
+    color: rgba(36, 48, 62, 1);
+} 
+
+p  {
+font-family: Barlow;
+font-size: calc(18px + 5 / 100 * 10vw);
+font-weight: 600;
+line-height: auto;
+letter-spacing: -0.12857143580913544px;
+text-align: left;
+color: rgba(128, 131, 151, 1);
+}
+
+h3  {
+    font-family: Fraunces;
+    font-size: calc(29px + 5 / 100 * 10vw);
+    font-weight: 900;
+    line-height: auto;
+    letter-spacing: -0.20000000298023224px;
+    text-align: center;
+    color: rgba(36, 85, 74, 1);
+}
+
+h4 {
+font-family: Barlow;
+font-size: calc(16px + 5 / 100 * 10vw);
+font-weight: 600;
+line-height: auto;
+letter-spacing: -0.11428571492433548px;
+text-align: center;
+color: rgba(62, 116, 103, 1);
+}
+
+h5 {
+font-family: Fraunces;
+font-size: calc(18px + 5 / 100 * 10vw);
+font-weight: 900;
+line-height: calc(25px + 18 / 100 * 10vw);
+letter-spacing: -0.12857143580913544px;
+text-align: center;
+color: rgba(36, 48, 62, 1);   
+margin: 0;
+margin-bottom: 6px
+}
+
+h6 {
+    font-family: Barlow;
+    font-size: calc(14px + 5 / 100 * 10vw);
+    font-weight: 600;
+    line-height: calc(25px + 25 / 100 * 10vw);
+    letter-spacing: -0.10000000149011612px;
+    text-align: center;
+    color: rgba(167, 170, 173, 1);
+    margin: 0;
+}
+
+.footer-item {
+    font-family: Barlow;
+    font-size: calc(18px + 5 / 100 * 10vw);
+    font-weight: 600;
+    line-height: auto;
+    letter-spacing: -0.12857143580913544px;
+    text-align: left;
+}
+
+a { 
+    font-family: Barlow;
+    font-size: calc(18px + 5 / 100 * 10vw);
+    font-weight: 600;
+    line-height: auto;
+    letter-spacing: -0.12857143580913544px;  
+}
+
+
+/* Section-2 - Services and Value Prepositions */
+
+.section-2 {
+    display: flex;
+    justify-content: center;
+}
+.section-2-texts {
+    align-items: center;
+    display: flex;
+}
+
+.section-2-texts-wrapper {
+    align-self: center;
+    margin: 20px;
+}
+
+.section-2-image {
+    width: 100%;
+}
+
+.section-2-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    aspect-ratio: auto;
+}
+
+/*section-2-service styles*/
+
+.section-2-service {
+    display: grid;
+    aspect-ratio: auto;
+    position: relative; 
+}
+
+.service-image-desktop {
+    width: 100%;
+}
+
+.service-image-mobile {
+    display: none;
+}
+
+.section-2-service-texts {
+    position: absolute;
+    width: 70%;
+    justify-self: center;
+    top: 50%;
+}
+
+/* Section-3 Testimonials*/
+
+.section-3-testimonials {
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.h2-testimonial {
+    text-align: center;
+}
+
+/* Section-3 Testimonials-cards*/
+
+.testimonial-cards-wrapper {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.testimonials-card {
+    justify-items: center;
+}
+
+
+.testimonial-card-image {
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-image {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10%
+}
+
+.p-testimonials-card-wrapper  {
+    display: flex;
+    justify-content: center;
+}
+
+.p-testimonial-card-body {
+    text-align  : center;
+    width: 90%;
+}
+
+.testimonial-person-name, .testimonial-person-title {
+    display: flex;
+    justify-content: center;
+}
+
+/* Section-4 Styles*/
+.section-4-wrapper {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.section-4-image {
+    width: 100%;
+}
+
+/* Footer Section*/
+
+footer {
+    background-color: rgba(144, 212, 198, 1);
+    display: grid;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.footer-wrapper {
+    width: 20.625%; /* 297px/1440px*/
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    color: rgba(44, 117, 102, 1);
+    display: grid;
+    justify-items: center;
+}
+
+.logo-footer {
+    width: 70%; /* 170px/1440px*/;
+    justify-self: center;
+}
+
+.footer-pages {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-social-media {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+
+/* Responsiveness styles start here */
+
+@media (max-width: 800px) {
+
+/*here we style the section 2 grid for responsiveness*/
+
+.section-2-wrapper {
+    grid-template-columns: 1fr; /* One column */
+}
+
+.egg-image {
+    order: -1;
+}
+
+.section-2-glass {
+    order: 3;
+}
+
+h1, h2, p {
+    text-align: center;
+}
+
+/* here we style the section 3 - testimonails - for the responsiveness */
+.testimonial-cards-wrapper {
+    grid-template-columns: 1fr; /* two columns */
+    position: relative;
+}
+
+/* here we style the section 4 for the responsiveness */ 
+
+.section-4-wrapper {
+    grid-template-columns: 1fr 1fr; /* two columns */
+    position: relative
+}
+
+.service-image-desktop {
+    display: none;
+}
+
+.service-image-mobile {
+    display: block;
+    width: 100%;
+    aspect-ratio: auto;
+}
+
+.section-2-service-texts {
+    top: 63%;
+}
+
+.p-testimonial-card-body {
+    width: 80%;
+}
+
+.footer-wrapper {
+    width: 80%;
+}
+
+}
